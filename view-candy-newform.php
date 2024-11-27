@@ -1,4 +1,4 @@
- // <td><a href="manufacturer-by-candy.php?id=<?php echo $candys['CandyID']; ?>">Manufacturers</a></td>
+
 
 
 

@@ -14,7 +14,7 @@ function SelectCandy() {
 }
 
 
-function insertCandy($cName, $cType, $cPrice, cManufacturerID) {
+function insertCandy($cName, $cType, $cPrice, $cManufacturerID) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("INSERT INTO candy (Name, Type, Price, ManufacturerID) VALUES (?, ?, ?, ?)");

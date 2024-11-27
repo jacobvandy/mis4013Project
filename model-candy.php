@@ -28,7 +28,7 @@ function insertCandy($cName, $cType, $cPrice, $cManufacturerID) {
     }
 }
 
-function updateCandy($cName, $cType, $cPrice, cManufacturerID) {
+function updateCandy($cName, $cType, $cPrice, $cManufacturerID) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("UPDATE candy SET Name = ?, Type = ?, Price = ?, ManudacturerID = ? WHERE CandyID = ?");

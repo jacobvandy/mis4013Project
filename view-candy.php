@@ -32,7 +32,7 @@ while ($candys = $candy->fetch_assoc()) {
   <td><?php echo $candys['Name']; ?></td>
   <td><?php echo $candys['Type']; ?></td>
   <td><?php echo $candys['Price']; ?></td>
-    <td><?php echo $candys['ManufacturerID']; ?></td>
+  <td><?php echo $candys['ManufacturerID']; ?></td>
   <td>
     <form method="post" action="">
   <input type="hidden" name="cid" value="<?php echo $candys['CandyID']; ?>">
@@ -49,7 +49,7 @@ while ($candys = $candy->fetch_assoc()) {
 include "view-candy-editform.php";
 ?>
   </td>
-  <td><a href="manufacturer-by-candy.php?id=<?php echo $candys['CandyID']; ?>">Manufacturers</a></td>
+ 
 
 </tr>
       <?php

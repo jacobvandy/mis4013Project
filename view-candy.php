@@ -49,7 +49,7 @@ while ($candys = $candy->fetch_assoc()) {
 include "view-candy-editform.php";
 ?>
   </td>
- 
+<td><a href="manufacturer-by-candy.php?id=<?php echo $candys['CandyID']; ?>">Manufacturers</a></td>
 
 </tr>
       <?php

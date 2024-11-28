@@ -4,10 +4,10 @@
   <thead>
     <tr>
     <th>ManufacturerID</th>
-    <th>Name</th>
+    <th>Candy Name</th>
     <th>Country</th>
-    
-      
+    <th>Manufacturer Name</th>
+    <th>Price</th>
 
     </tr>
     
@@ -20,6 +20,8 @@ while ($manus = $manu->fetch_assoc()) {
   <td><?php echo $manus['ManufacturerID']; ?></td>
   <td><?php echo $manus['Name']; ?></td>
   <td><?php echo $manus['Country']; ?></td>
+  <td><?php echo $manus['Name']; ?></td>
+  <td><?php echo $manus['Price']; ?></td>
 
 </tr>
       <?php

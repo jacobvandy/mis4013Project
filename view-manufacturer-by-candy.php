@@ -18,9 +18,9 @@ while ($manus = $manu->fetch_assoc()) {
   ?>
 <tr>
   <td><?php echo $manus['ManufacturerID']; ?></td>
-  <td><?php echo $manus['Name']; ?></td>
+  <td><?php echo $manus['CandyName']; ?></td>
   <td><?php echo $manus['Country']; ?></td>
-  <td><?php echo $manus['Name']; ?></td>
+  <td><?php echo $manus['ManuName']; ?></td>
   <td><?php echo $manus['Price']; ?></td>
 
 </tr>

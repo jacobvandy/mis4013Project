@@ -26,7 +26,7 @@
           <a class="nav-link" href="menu.php">Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="resturant-with-employees.php">Restaurant with Menu</a>
+          <a class="nav-link" href="candy-chart.php">Restaurant with Menu</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="employees.php">Employees</a>

@@ -24,7 +24,7 @@ while ($candys = $candy->fetch_assoc()) {
         ?>
           </ul>
         </p>
-      <p class="card-text"><small class="text-body-secondary">Candy Type/ID: <?php echo $candys['Type']; ?></small></p>
+      <p class="card-text"><small class="text-body-secondary">Candy Type/ID: <?php echo $candys['Type']; ?> - <?php echo $candys['CandyID']; ?></small></p>
     </div>
   </div>
 

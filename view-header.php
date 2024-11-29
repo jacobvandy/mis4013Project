@@ -23,7 +23,7 @@
           <a class="nav-link" href="candy.php">Candy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="candy-with-manufacturer.php">Manufacturers and their Candies</a>
+          <a class="nav-link" href="candy-with-manufacturer.php">Manufacturers with Candies</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="candy-chart.php">Candy Chart</a>

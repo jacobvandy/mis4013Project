@@ -4,19 +4,19 @@
     
  
       <?php
-while ($manus = $manu->fetch_assoc()) {
+while ($candys = $candy->fetch_assoc()) {
   ?>
   <div class="card">
    
     <div class="card-body">
-      <h5 class="card-title"><?php echo $manus['ManuName']; ?></h5>
+      <h5 class="card-title"><?php echo $candys['CandyName']; ?></h5>
       <p class="card-text">
         <ul class="list-group">
         <?php
-        $candy = SelectManufacturerByCandy($manus['ManufacturerID']);
-        while ($candys = $candy->fetch_assoc()) {
+        $manu = SelectManufacturerByCandy($candys['CandyID']);
+        while ($manus = $manu->fetch_assoc()) {
           ?>
-          <li class="list-group-item"><?php echo $candys['CandyID']; ?> - <?php echo $candys['CandyName']; ?> - <?php echo $candys['Price']; ?> - <?php echo $candys['ManufacturerID']; ?> - <?php echo $candys['Country']; ?> - <?php echo $candys['Type']; ?></li>
+          <li class="list-group-item"><?php echo $manus['CandyID']; ?> - <?php echo $manus['CandyName']; ?> - <?php echo $manus['Price']; ?> - <?php echo $manus['ManufacturerID']; ?> - <?php echo $manus['Country']; ?> </li>
 
           <?php
         }
@@ -24,7 +24,7 @@ while ($manus = $manu->fetch_assoc()) {
         ?>
           </ul>
         </p>
-      <p class="card-text"><small class="text-body-secondary">Manufacturer Country: <?php echo $manus['Country']; ?></small></p>
+      <p class="card-text"><small class="text-body-secondary">Manufacturer Country: <?php echo $candys['Type']; ?></small></p>
     </div>
   </div>
 

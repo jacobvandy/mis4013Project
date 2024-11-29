@@ -2,7 +2,7 @@
 function SelectCandy() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT RestaurantID, Name, Rating, FoodType FROM tacobell");
+        $stmt = $conn->prepare("SELECT CandyID, Name, Type, Price, ManufacturerID FROM candy");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();

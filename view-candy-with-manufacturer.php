@@ -16,7 +16,7 @@ while ($candys = $candy->fetch_assoc()) {
         $manu = SelectManufacturerByCandy($candys['CandyID']);
         while ($manus = $manu->fetch_assoc()) {
           ?>
-          <li class="list-group-item"><?php echo $manus['ManuName']; ?> - <?php echo $manus['CandyName']; ?> - <?php echo $manus['Price']; ?> - <?php echo $manus['CandyID']; ?> - <?php echo $manus['Country']; ?> </li>
+          <li class="list-group-item"><?php echo $manus['ManuName']; ?> - <?php echo $manus['Price']; ?> - <?php echo $manus['CandyID']; ?> - <?php echo $manus['Country']; ?> </li>
 
           <?php
         }

@@ -22,7 +22,7 @@ while ($candys = $candy->fetch_assoc()) {
         <ul class="list-group">
         <?php
         $manu = SelectManufacturerByCandy($candys['CandyID']);
-        while ($manus = $manu->fetch_assoc())) {
+        while ($manus = $manu->fetch_assoc()) {
           ?>
           <li class="list-group-item"><?php echo $manus['ManuName']; ?> - <?php echo $manus['CandyName']; ?> - <?php echo $manus['Price']; ?> - <?php echo $manus['Country']; ?> </li>
          <form method="post" action="">

@@ -4,9 +4,7 @@
   </div>
   <div class = "col-auto">
 
-    <?php
-include "view-candy-with-manufacturer-newform.php";
-?>
+
 </div>
 </div>
 <div class="card-group">
@@ -37,9 +35,7 @@ while ($candys = $candy->fetch_assoc()) {
                 </button>
               </form>
           
-              <?php
-include "view-candy-with-manufacturer-editform.php";
-?>
+
             </li>
           <?php
         }

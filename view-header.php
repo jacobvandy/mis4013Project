@@ -28,18 +28,6 @@
         <li class="nav-item">
           <a class="nav-link" href="candy-chart.php">Candy Chart</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="employees.php">Employees</a>
-        </li>
-       <li class="nav-item">
-          <a class="nav-link" href="employees-with-restaurant.php">Employees with Restaurant</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="restaurant-chart.php">Restaurant and Employees Chart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="menu-chart.php">Menu Chart</a>
-        </li>
           <li class="nav-item">
           <a class="nav-link" href="price-sum.php">Price Summary</a>
         </li>

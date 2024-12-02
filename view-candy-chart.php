@@ -1,4 +1,4 @@
-<h1>Number of Employees per Taco Bell</h1>
+<h1>Candy Price Pie Chart</h1>
 
 <div>
   <canvas id="myChart"></canvas>
@@ -31,15 +31,16 @@ while ($candys = $candy->fetch_assoc()) {
       ]
     },
     options: {
-    plugins: {
-    legend: {
-    labels: {
-    font: {
-    weight: 'bold', 
-    size: 14
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 14, // Font size
+              style: 'bold' // Bold font style
+            }
+          }
+        }
+      }
     }
-    }
-  }
- }
-}
-});
+  });
+</script>

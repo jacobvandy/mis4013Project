@@ -1,7 +1,6 @@
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
 
 <h1>Max and Min Prices</h1>
 
@@ -20,7 +19,7 @@
 </div>
 
 <script>
-    // Price Summary Logic
+    // Original Price Summary Logic (unchanged)
     const prices = [
         <?php
         $first = true;
@@ -32,15 +31,12 @@
         ?>
     ];
 
-    // Calculate min and max prices
     const minPrice = math.min(prices);
     const maxPrice = math.max(prices);
 
-    // Display min and max prices
-    document.getElementById('minPrice').textContent = `Minimum Price: $${minPrice.toFixed(2)}`;
-    document.getElementById('maxPrice').textContent = `Maximum Price: $${maxPrice.toFixed(2)}`;
+    document.getElementById('minPrice').textContent = `Minimum Price: $${minPrice}`;
+    document.getElementById('maxPrice').textContent = `Maximum Price: $${maxPrice}`;
 
-    // Price Distribution Pie Chart
     const pieData = [{
         values: prices,
         labels: prices,
@@ -55,14 +51,14 @@
 
     Plotly.newPlot('pricePieChart', pieData, pieLayout);
 
-    // Orders Chart Logic
+    // New Bar Chart for Orders
     const ctx = document.getElementById('ordersChart');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [
                 <?php
-                // Fetch data for the orders chart
+                // Fetch candy names and quantities
                 $query = "
                     SELECT c.Name AS CandyName, SUM(o.Quantity) AS TotalQuantity
                     FROM Orders o
@@ -70,25 +66,21 @@
                     GROUP BY c.Name
                 ";
                 $result = $conn->query($query);
-                $first = true;
+
+                $candyNames = [];
+                $quantities = [];
                 while ($row = $result->fetch_assoc()) {
-                    if (!$first) echo ", ";
-                    echo "'" . $row['CandyName'] . "'";
-                    $first = false;
+                    $candyNames[] = $row['CandyName'];
+                    $quantities[] = $row['TotalQuantity'];
                 }
+                echo "'" . implode("','", $candyNames) . "'"; // Output candy names
                 ?>
             ],
             datasets: [{
                 label: 'Total Quantity Ordered',
                 data: [
                     <?php
-                    $result = $conn->query($query);
-                    $first = true;
-                    while ($row = $result->fetch_assoc()) {
-                        if (!$first) echo ", ";
-                        echo $row['TotalQuantity'];
-                        $first = false;
-                    }
+                    echo implode(",", $quantities); // Output quantities
                     ?>
                 ],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',

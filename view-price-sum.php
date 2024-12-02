@@ -62,6 +62,7 @@
         data: {
             labels: [
                 <?php
+require_once('util-db.php');
                 $query = "
                     SELECT c.Name AS CandyName, SUM(o.Quantity) AS TotalQuantity
                     FROM Orders o

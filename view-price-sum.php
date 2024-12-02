@@ -1,19 +1,14 @@
 
-
-
-
-
-     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 
 <h1>Max and Min Prices</h1>
 
 <div id="priceSummary">
     <h3>Price Summary</h3>
-    <p id="minPrice"></p>
-    <p id="maxPrice"></p>
+    <p id="minPrice">Loading...</p>
+    <p id="maxPrice">Loading...</p>
 </div>
 
 <h2>Price Distribution</h2>
@@ -37,11 +32,13 @@
         ?>
     ];
 
+    // Calculate min and max prices
     const minPrice = math.min(prices);
     const maxPrice = math.max(prices);
 
-    document.getElementById('minPrice').textContent = `Minimum Price: $${minPrice}`;
-    document.getElementById('maxPrice').textContent = `Maximum Price: $${maxPrice}`;
+    // Display min and max prices
+    document.getElementById('minPrice').textContent = `Minimum Price: $${minPrice.toFixed(2)}`;
+    document.getElementById('maxPrice').textContent = `Maximum Price: $${maxPrice.toFixed(2)}`;
 
     // Price Distribution Pie Chart
     const pieData = [{
@@ -65,6 +62,7 @@
         data: {
             labels: [
                 <?php
+                // Fetch data for the orders chart
                 $query = "
                     SELECT c.Name AS CandyName, SUM(o.Quantity) AS TotalQuantity
                     FROM Orders o
@@ -72,8 +70,11 @@
                     GROUP BY c.Name
                 ";
                 $result = $conn->query($query);
+                $first = true;
                 while ($row = $result->fetch_assoc()) {
-                    echo "'" . $row['CandyName'] . "', ";
+                    if (!$first) echo ", ";
+                    echo "'" . $row['CandyName'] . "'";
+                    $first = false;
                 }
                 ?>
             ],
@@ -82,8 +83,11 @@
                 data: [
                     <?php
                     $result = $conn->query($query);
+                    $first = true;
                     while ($row = $result->fetch_assoc()) {
-                        echo $row['TotalQuantity'] . ", ";
+                        if (!$first) echo ", ";
+                        echo $row['TotalQuantity'];
+                        $first = false;
                     }
                     ?>
                 ],

@@ -1,13 +1,19 @@
+<?php
+require_once('util-db.php'); // Ensure this file includes the database connection
+
+// Existing logic for prices and chart
+?>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <h1>Max and Min Prices</h1>
 
 <div id="priceSummary">
     <h3>Price Summary</h3>
-    <p id="minPrice">Loading...</p>
-    <p id="maxPrice">Loading...</p>
+    <p id="minPrice"></p>
+    <p id="maxPrice"></p>
 </div>
 
 <h2>Price Distribution</h2>
@@ -19,15 +25,16 @@
 </div>
 
 <script>
-    // Original Price Summary Logic (unchanged)
     const prices = [
         <?php
-        $first = true;
-        while ($candys1 = $candy1->fetch_assoc()) {
-            if (!$first) echo ", ";
-            echo $candys1['Price'];
-            $first = false;
+        $pricesQuery = "SELECT Price FROM Candy";
+        $pricesResult = $conn->query($pricesQuery);
+
+        $pricesArray = [];
+        while ($row = $pricesResult->fetch_assoc()) {
+            $pricesArray[] = $row['Price'];
         }
+        echo implode(",", $pricesArray);
         ?>
     ];
 
@@ -39,7 +46,7 @@
 
     const pieData = [{
         values: prices,
-        labels: prices,
+        labels: prices.map((price) => `$${price.toFixed(2)}`),
         type: 'pie'
     }];
 
@@ -51,36 +58,34 @@
 
     Plotly.newPlot('pricePieChart', pieData, pieLayout);
 
-    // New Bar Chart for Orders
     const ctx = document.getElementById('ordersChart');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [
                 <?php
-                // Fetch candy names and quantities
-                $query = "
+                $ordersQuery = "
                     SELECT c.Name AS CandyName, SUM(o.Quantity) AS TotalQuantity
                     FROM Orders o
                     JOIN Candy c ON o.CandyID = c.CandyID
                     GROUP BY c.Name
                 ";
-                $result = $conn->query($query);
+                $ordersResult = $conn->query($ordersQuery);
 
                 $candyNames = [];
                 $quantities = [];
-                while ($row = $result->fetch_assoc()) {
+                while ($row = $ordersResult->fetch_assoc()) {
                     $candyNames[] = $row['CandyName'];
                     $quantities[] = $row['TotalQuantity'];
                 }
-                echo "'" . implode("','", $candyNames) . "'"; // Output candy names
+                echo "'" . implode("','", $candyNames) . "'";
                 ?>
             ],
             datasets: [{
                 label: 'Total Quantity Ordered',
                 data: [
                     <?php
-                    echo implode(",", $quantities); // Output quantities
+                    echo implode(",", $quantities);
                     ?>
                 ],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',

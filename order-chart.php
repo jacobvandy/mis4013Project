@@ -88,31 +88,3 @@ $conn = get_db_connection(); // Call the function to get the $conn object
     </script>
 </body>
 </html>
-Key Changes
-Use get_db_connection():
-
-Added the following line to get the $conn object:
-php
-Copy code
-$conn = get_db_connection();
-Avoid $conn Undefined Errors:
-
-The $conn variable is explicitly initialized using the function provided in util-db.php.
-Retained Original Logic:
-
-The rest of the code remains the same, using $conn for the database query.
-Steps to Verify
-Ensure util-db.php Works:
-
-Test the get_db_connection() function separately to confirm it returns a valid connection:
-php
-Copy code
-<?php
-require_once('util-db.php');
-$conn = get_db_connection();
-if ($conn) {
-    echo "Connection successful!";
-} else {
-    echo "Failed to connect.";
-}
-?>

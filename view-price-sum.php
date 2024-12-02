@@ -2,10 +2,7 @@
 
 <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
 
-
- <h1>Max and Min Prices</h1>
-  
-
+<h1>Max and Min Prices</h1>
 
 <div id="priceSummary">
     <h3>Price Summary</h3>
@@ -17,7 +14,6 @@
 <div id="pricePieChart" style="width: 600px; height: 400px;"></div>
 
 <script>
-  
     const prices = [
         <?php
         $first = true;
@@ -31,15 +27,13 @@
 
     console.log("Prices:", prices);
 
-    
     const minPrice = math.min(prices);
     const maxPrice = math.max(prices);
 
+    document.getElementById('minPrice').textContent = `Minimum Price: $${minPrice}`;
+    document.getElementById('maxPrice').textContent = `Maximum Price: $${maxPrice}`;
 
-    document.getElementById('minPrice').textContent = Minimum Price: $${minPrice};
-    document.getElementById('maxPrice').textContent = Maximum Price: $${maxPrice};
-
-     const pieData = [{
+    const pieData = [{
         values: prices,
         labels: prices,
         type: 'pie'
@@ -53,4 +47,3 @@
 
     Plotly.newPlot('pricePieChart', pieData, pieLayout);
 </script>
-

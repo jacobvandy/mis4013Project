@@ -1,8 +1,13 @@
 <?php
-require_once('util-db.php'); // Include the database connection utility
+require_once('util-db.php');
 
-// Establish a database connection
-$conn = get_db_connection(); // Call the function to get the $conn object
+
+$conn = get_db_connection();
+
+include "view-header.php";
+
+include "view-footer.php";
+
 ?>
 
 <!DOCTYPE html>

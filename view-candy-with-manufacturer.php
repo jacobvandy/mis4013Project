@@ -3,7 +3,10 @@
     <h1>Candy with Manufacturer</h1>
   </div>
   <div class = "col-auto">
-
+    
+ <?php
+include "view-candy-with-manufacturer-newform.php";
+?>
 
 </div>
 </div>
@@ -35,7 +38,9 @@ while ($candys = $candy->fetch_assoc()) {
                 </button>
               </form>
           
-
+  <?php
+include "view-candy-with-manufacturer-editform.php";
+?>
             </li>
           <?php
         }

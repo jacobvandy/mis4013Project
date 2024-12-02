@@ -31,10 +31,14 @@
                   <li class="nav-item">
                     <a class="nav-link" href="candy-chart.php">Candy Chart</a>
                 </li>
-                  <li class="nav-item">
+               <li class="nav-item">
                     <a class="nav-link" href="price-sum.php">Price Summary</a>
+               </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="order-chart.php">Orders Chart</a>
                 </li>
                 </ul>
               </div>
             </div>
       </nav>
+

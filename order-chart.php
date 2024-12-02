@@ -1,6 +1,8 @@
 <?php
+require_once('util-db.php'); // Include the database connection utility
 
-require_once('util-db.php');
+// Establish a database connection
+$conn = get_db_connection(); // Call the function to get the $conn object
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +11,7 @@ require_once('util-db.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
     <h1>Total Quantity Ordered for Each Candy</h1>
@@ -31,7 +33,7 @@ require_once('util-db.php');
                         JOIN Candy c ON o.CandyID = c.CandyID
                         GROUP BY c.Name
                     ";
-                    $result = $conn->query($query);
+                    $result = $conn->query($query); // Use $conn obtained from get_db_connection()
 
                     $candyNames = [];
                     $quantities = [];
@@ -86,3 +88,31 @@ require_once('util-db.php');
     </script>
 </body>
 </html>
+Key Changes
+Use get_db_connection():
+
+Added the following line to get the $conn object:
+php
+Copy code
+$conn = get_db_connection();
+Avoid $conn Undefined Errors:
+
+The $conn variable is explicitly initialized using the function provided in util-db.php.
+Retained Original Logic:
+
+The rest of the code remains the same, using $conn for the database query.
+Steps to Verify
+Ensure util-db.php Works:
+
+Test the get_db_connection() function separately to confirm it returns a valid connection:
+php
+Copy code
+<?php
+require_once('util-db.php');
+$conn = get_db_connection();
+if ($conn) {
+    echo "Connection successful!";
+} else {
+    echo "Failed to connect.";
+}
+?>

@@ -4,10 +4,7 @@
   <canvas id="myChart"></canvas>
 </div>
 
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-     
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
   const ctx = document.getElementById('myChart');
@@ -15,27 +12,34 @@
   new Chart(ctx, {
     type: 'doughnut',
     data: {
-    datasets: [{
+      datasets: [{
         data: [
 <?php
 while ($candys = $candy->fetch_assoc()) {
     echo $candys['Candy_Count'] . ", ";
 }
-  ?> 
+?>
         ]
-    }],
-
- 
-    labels: [
+      }],
+      labels: [
 <?php
 $candy = SelectCandy();
 while ($candys = $candy->fetch_assoc()) {
     echo "'" . $candys['Name'] . "', ";
 }
-  ?>
-    ]
-},
-    
-  });
-</script>
- 
+?>
+      ]
+    },
+    options: {
+    plugins: {
+    legend: {
+    labels: {
+    font: {
+    weight: 'bold', 
+    size: 14
+    }
+    }
+  }
+ }
+}
+});

@@ -1,7 +1,5 @@
 <?php
-require_once('util-db.php'); // Ensure this file includes the database connection
-
-// Existing logic for prices and chart
+require_once('util-db.php'); // Include the database connection file
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
@@ -12,8 +10,8 @@ require_once('util-db.php'); // Ensure this file includes the database connectio
 
 <div id="priceSummary">
     <h3>Price Summary</h3>
-    <p id="minPrice"></p>
-    <p id="maxPrice"></p>
+    <p id="minPrice">Loading...</p>
+    <p id="maxPrice">Loading...</p>
 </div>
 
 <h2>Price Distribution</h2>
@@ -25,56 +23,25 @@ require_once('util-db.php'); // Ensure this file includes the database connectio
 </div>
 
 <script>
-    const prices = [
-        <?php
-        $pricesQuery = "SELECT Price FROM Candy";
-        $pricesResult = $conn->query($pricesQuery);
-
-        $pricesArray = [];
-        while ($row = $pricesResult->fetch_assoc()) {
-            $pricesArray[] = $row['Price'];
-        }
-        echo implode(",", $pricesArray);
-        ?>
-    ];
-
-    const minPrice = math.min(prices);
-    const maxPrice = math.max(prices);
-
-    document.getElementById('minPrice').textContent = `Minimum Price: $${minPrice}`;
-    document.getElementById('maxPrice').textContent = `Maximum Price: $${maxPrice}`;
-
-    const pieData = [{
-        values: prices,
-        labels: prices.map((price) => `$${price.toFixed(2)}`),
-        type: 'pie'
-    }];
-
-    const pieLayout = {
-        title: 'Price Distribution',
-        height: 400,
-        width: 600
-    };
-
-    Plotly.newPlot('pricePieChart', pieData, pieLayout);
-
+    // Orders Chart Logic
     const ctx = document.getElementById('ordersChart');
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: [
                 <?php
-                $ordersQuery = "
+                // Fetch candy names and quantities
+                $query = "
                     SELECT c.Name AS CandyName, SUM(o.Quantity) AS TotalQuantity
                     FROM Orders o
                     JOIN Candy c ON o.CandyID = c.CandyID
                     GROUP BY c.Name
                 ";
-                $ordersResult = $conn->query($ordersQuery);
+                $result = $conn->query($query); // Use the $conn from util-db.php
 
                 $candyNames = [];
                 $quantities = [];
-                while ($row = $ordersResult->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) {
                     $candyNames[] = $row['CandyName'];
                     $quantities[] = $row['TotalQuantity'];
                 }

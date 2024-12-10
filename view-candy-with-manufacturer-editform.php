@@ -33,10 +33,7 @@
       ?>
         </div>
 
-         <div class="mb-3">
-          <label for="cid<?php echo $manus['ManufacturerID']; ?>" class="form-label">CandyID  </label>
-          <input type="text" class="form-control" id="cid<?php echo $manus['ManufacturerID']; ?>" name="cid" value="<?php echo $manus['CandyID']; ?>">
-      </div>
+        
         
       
         <input type="hidden" name="mid" value="<?php echo $manus['ManufacturerID']; ?>">

@@ -33,7 +33,7 @@
       ?>
         </div>
       
-        <input type="hidden" name="mid"value="<?php echo $manus['ManufacturerID']; ?>">
+        <input type="hidden" name="mid" value="<?php echo $manus['ManufacturerID']; ?>">
         <input type="hidden" name="actionType" value="Edit">
         <button type="submit" class="btn btn-primary">Save</button>
     </form>

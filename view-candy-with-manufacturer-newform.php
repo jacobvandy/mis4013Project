@@ -46,7 +46,11 @@
           <label for="mCountry" class="form-label">Country </label>
           <input type="text" class="form-control" id="mCountry" name="mCountry">
         </div>  
-    
+
+              <div class="mb-3">
+          <label for="cid" class="form-label">CandyID </label>
+          <input type="text" class="form-control" id="cid" name="cid">
+        </div>  
          
         
         <input type="hidden" name="actionType" value="Add">

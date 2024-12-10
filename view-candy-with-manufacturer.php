@@ -27,9 +27,9 @@ while ($candys = $candy->fetch_assoc()) {
         $manu = SelectManufacturerByCandy($candys['CandyID']);
         while ($manus = $manu->fetch_assoc()) {
           ?>
-          <li class="list-group-item"><?php echo $manus['ManuName']; ?> - <?php echo $manus['CandyName']; ?> - <?php echo $manus['Price']; ?> - <?php echo $manus['Country']; ?> </li>
+          <li class="list-group-item"><?php echo $manus['ManufacturerID']; ?> - <?php echo $manus['ManuName']; ?> - <?php echo $manus['CandyName']; ?> - <?php echo $manus['Price']; ?> - <?php echo $manus['Country']; ?> - <?php echo $manus['CandyID']; ?> </li>
          <form method="post" action="">
-                <input type="hidden" name="manid" value="<?php echo $manus['ManufacturerID']; ?>">
+                <input type="hidden" name="mid" value="<?php echo $manus['ManufacturerID']; ?>">
                 <input type="hidden" name="actionType" value="Delete">
                 <button type="submit" class="btn btn-primary" onclick="return confirm('Confirm Changes?');">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

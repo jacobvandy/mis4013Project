@@ -42,12 +42,7 @@
           <label for="mCountry" class="form-label">Country </label>
           <input type="text" class="form-control" id="mCountry" name="mCountry">
         </div>  
-        
-        <div class="mb-3">
-          <label for="mid" class="form-label">Manufacturer ID </label>
-          <input type="text" class="form-control" id="mid" name="mid">
-        </div>  
-
+    
          
         
         <input type="hidden" name="actionType" value="Add">

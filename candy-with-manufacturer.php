@@ -18,7 +18,7 @@ if (isset($_POST['actionType'])) {
 
 
   case "Edit":
-   if (updateCanManu($_POST['mName'], $_POST['mCountry'])) {
+   if (updateCanManu($_POST['mName'], $_POST['mCountry'], $_POST['cid'])) {
     echo '<div class="alert alert-success" role="alert"> Candy edited!</div>';
    } else {
     '<div class="alert alert-danger" role="alert">Error editing Candy</div>';

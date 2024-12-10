@@ -64,8 +64,8 @@ function insertCanManu($mName, $mCountry, $cName, $cPrice) {
 function updateCanManu($mName, $mCountry $mid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE manufacturer SET Name = ?, Country = ? WHERE Manufacturer = ?");
-        $stmt->bind_param("ssi", $mName, $mCountry, $cmid);
+        $stmt = $conn->prepare("UPDATE manufacturer SET Name = ?, Country = ? WHERE ManufacturerID = ?");
+        $stmt->bind_param("ssi", $mName, $mCountry, $mid);
         $success =  $stmt->execute();
 
         $conn->close();

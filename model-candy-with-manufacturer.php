@@ -61,11 +61,11 @@ function insertCanManu($mName, $mCountry, $mid, $cName, $cPrice, $cid) {
     }
 }
 
-function updateCanManu($mName, $mCountry, $mid) {
+function updateCanManu($mName, $mCountry, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE manufacturer SET Name = ?, Country = ? WHERE ManufacturerID = ?");
-        $stmt->bind_param("ssi", $mName, $mCountry, $mid);
+        $stmt = $conn->prepare("UPDATE manufacturer SET Name = ?, Country = ? WHERE CandyID = ?");
+        $stmt->bind_param("ssi", $mName, $mCountry, $cid);
         $success =  $stmt->execute();
 
         $conn->close();
@@ -76,12 +76,12 @@ function updateCanManu($mName, $mCountry, $mid) {
     }
 }
 
-function deleteCanManu($mid) {
+function deleteCanManu($cid) {
     try {
         $conn = get_db_connection();
       
-         $stmt = $conn->prepare("DELETE FROM manufacturer WHERE ManufacturerID = ?");
-        $stmt->bind_param("i", $mid);
+         $stmt = $conn->prepare("DELETE FROM candy WHERE CandyID = ?");
+        $stmt->bind_param("i", $cid);
         $success =  $stmt->execute();
 
         

@@ -61,7 +61,7 @@ function insertCanManu($mName, $mCountry, $mid, $cName, $cPrice) {
     }
 }
 
-function updateCanManu($mName, $mCountry $mid) {
+function updateCanManu($mName, $mCountry, $mid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("UPDATE manufacturer SET Name = ?, Country = ? WHERE ManufacturerID = ?");

@@ -76,12 +76,12 @@ function updateCanManu($mName, $mCountry, $mid) {
     }
 }
 
-function deleteCanManu($manid) {
+function deleteCanManu($mid) {
     try {
         $conn = get_db_connection();
       
          $stmt = $conn->prepare("DELETE FROM manufacturer WHERE ManufacturerID = ?");
-        $stmt->bind_param("i", $manid);
+        $stmt->bind_param("i", $mid);
         $success =  $stmt->execute();
 
         

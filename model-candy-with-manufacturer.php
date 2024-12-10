@@ -42,11 +42,11 @@ function SelectManuForInput() {
     }
 }
 
-function insertCanManu($mName, $mCountry, $mid, $cName, $cPrice) {
+function insertCanManu($mName, $mCountry, $cName, $cPrice) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO manufacturer (Name, Country, ManufacturerID) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssi", $mName, $mCountry, $mid);
+        $stmt = $conn->prepare("INSERT INTO manufacturer (Name, Country) VALUES (?, ?)");
+        $stmt->bind_param("ss", $mName, $mCountry);
         $success =  $stmt->execute();
 
         $stmt = $conn->prepare("INSERT INTO candy (Name, Price) VALUES (?,?)");
